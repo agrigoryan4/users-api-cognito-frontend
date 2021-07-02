@@ -24,7 +24,7 @@ function SignUp() {
 
   useEffect(() => {
     if (state.progress.success) {
-      history.push('/signin');
+      history.push('/confirmemail');
     }
   }, [state.progress.success]);
 
@@ -78,7 +78,6 @@ function SignUp() {
           success: true,
         },
       });
-      alert('Signup successfull, redirecting...');
     } catch (error) {
       console.log(error);
       setState({
@@ -95,7 +94,7 @@ function SignUp() {
     form: {
       name, nickname, favouriteAnimal, email, password, repeatPassword,
     },
-    progress: { error, success },
+    progress: { error },
   } = state;
   return (
     <div className={classes.wrapper}>
@@ -127,9 +126,12 @@ function SignUp() {
         </label>
         <button type="button" onClick={onSignUp}>Sign Up</button>
       </form>
-      <br/>
-      <br/>
-      <h4>Already have an account? <Link to="/signin">Sign In</Link></h4>
+      <br />
+      <br />
+      <h4>
+        Already have an account?
+        <Link to="/signin">Sign In</Link>
+      </h4>
     </div>
   );
 }
